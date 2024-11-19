@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ReactNode} from "react";
 import { View } from "react-native";
 import { styles } from "./styles";
 
 interface BodyProps{
-    children: React.ReactNode;
+    children: ReactNode;
 }
 
 const Body: React.FC<BodyProps>  = ({ children }) => {
