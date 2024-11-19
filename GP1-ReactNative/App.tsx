@@ -1,20 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { Body } from './src/components/Body';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>SALVE</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Body>
+      <Text>
+        Pagina app
+      </Text>
+    </Body>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
