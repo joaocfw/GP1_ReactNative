@@ -59,7 +59,7 @@ const Favorites = () => {
                         image={favorite.image}
                         isChecked={favorite.isChecked}
                         onCheck={() => checkboxFavorites(favorite.id)}
-                        onRemove={() => removeFavorite(favorite.id)}
+                        onRemoved={() => removeFavorite(favorite.id)}
                     />
                 ))}
             </View>
