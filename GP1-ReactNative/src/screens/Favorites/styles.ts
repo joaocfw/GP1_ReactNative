@@ -1,13 +1,21 @@
 import { StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
     cardsContainer: {
-        marginTop: 20,
-        width: "100%",
-        padding: 10,
+        marginTop: 16,
     },
     removedContainer: {
         alignItems: "center",
         marginBottom: 20,
+    },
+    cardImage: {
+        width: 50,
+        height: 50,
+        marginRight: 10,
+    },
+    removedText: {
+        fontSize: 16,
+        color: "red",
+        marginTop: 8,
     },
 })
