@@ -1,15 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { Body } from './src/components/Body';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { MyStack } from "./src/Routes/MyStack";
 
 export default function App() {
   return (
-    <Body>
-      <Text>
-        Pagina app
-      </Text>
-    </Body>
-  );
-}
-
-
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
+  );}

@@ -1,17 +1,15 @@
-import React, { ReactNode} from "react";
-import { View } from "react-native";
+import React from "react";
+import { View, ViewStyle } from "react-native";
 import { styles } from "./styles";
 
-interface BodyProps{
-    children: ReactNode;
+
+interface BodyProps {
+  children: React.ReactNode;
+  customStyle: ViewStyle;
 }
 
-const Body: React.FC<BodyProps>  = ({ children }) => {
-    return (
-    <View style={styles.container}>
-        {children}
-    </View>
-    );
+const Body: React.FC<BodyProps> = ({ children, customStyle }) => {
+  return <View style={[styles.Body, customStyle]}>{children}</View>;
 };
 
-export { Body };
+export default Body;
