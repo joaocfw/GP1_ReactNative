@@ -1,11 +1,11 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image } from 'react-native';
-import Home from '../screens/Home'
-import Search from '../screens/Search'
-import Favorites from '../screens/Favorites'
-import HomeIcon from '../assets/Home.png'
-import SearchIcon from '../assets/Search.png'
-import FavoriteIcon from '../assets/Favorite.png'
+import Home from '../../screens/Home';
+import Search from '../../screens/Search'
+import Favorites from '../../screens/Favorites'
+import HomeIcon from '../../assets/Home.png'
+import SearchIcon from '../../assets/Search.png'
+import FavoriteIcon from '../../assets/Favorite.png'
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 

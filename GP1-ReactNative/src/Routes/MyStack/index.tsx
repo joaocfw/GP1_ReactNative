@@ -1,9 +1,9 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import SignIn from '../screens/SignIn';
-import SignUp from '../screens/SignUp';
-import { RootStackParamList } from '../Navigation/types';
-import { BottomTabRoutes } from './MyTab';
+import SignIn from '../../screens/SignIn';
+import SignUp from '../../screens/SignUp';
+import { RootStackParamList } from '../../Navigation/types';
+import { BottomTabRoutes } from '../MyTabs';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
