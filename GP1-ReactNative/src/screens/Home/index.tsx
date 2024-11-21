@@ -1,12 +1,12 @@
 import React from "react";
-import { Image } from "react-native";
+import { Image, Text, View } from "react-native";
 import Body from "../../components/Body";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../Navigation/types";
 import { useNavigation } from "@react-navigation/native";
 import { HomeList } from "../../components/HomeList";
 import { styles } from './styles'
-import { ScrollView } from "react-native-gesture-handler";
+import HeaderHome from '../../assets/HeaderHome.png'
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Home">
 
@@ -29,6 +29,10 @@ export const Home = () => {
 
     return (
             <Body customStyle={{}}>
+                <View style={styles.headerHome}>
+                    <Image source={HeaderHome} />
+                    <Text style={styles.headerHomeText}> Bem-vindo, Fulano.</Text>
+                </View>
                 <Image source={{ uri: 'https://lunetas.com.br/wp-content/uploads/2023/07/5-brincadeiras-inspiradas-em-filmes-para-fazer-com-as-criancas-portal-lunetas.jpg' }} style={styles.mainImage} />
                 <HomeList title='Ação' data={DATA} />
             </Body>

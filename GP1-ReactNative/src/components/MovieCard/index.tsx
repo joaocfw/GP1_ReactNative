@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Image, ImageSourcePropType, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 
@@ -8,7 +8,7 @@ type CardProps = {
     };
 };
 
-export const MovieCard: FC<CardProps> = ({ item }) => {
+export const MovieCard: React.FC<CardProps> = ({ item }) => {
     return (
         <TouchableOpacity activeOpacity={0.7} style={styles.movieCardContainer}>
             <Image source={{ uri: item.image }} style={styles.movieCardImage} />
