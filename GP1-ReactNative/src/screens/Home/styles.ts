@@ -22,5 +22,10 @@ export const styles = StyleSheet.create({
         fontWeight: 'black',
         marginTop: 4,
     },
+    carouselImage: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'contain',
+    }
 
 })
