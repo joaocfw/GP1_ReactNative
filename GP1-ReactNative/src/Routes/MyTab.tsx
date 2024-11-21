@@ -35,21 +35,24 @@ const renderTabIcon = (source: any) => ({ color }: { color: string }) => (
           name="Home"
           component={Home}
           options={{
-            tabBarIcon: renderTabIcon(HomeIcon)
+            tabBarIcon: renderTabIcon(HomeIcon),
+            tabBarLabel: "Início",
           }}
         />
         <Tab.Screen
           name="Search"
           component={Search}
           options={{
-            tabBarIcon: renderTabIcon(SearchIcon)
+            tabBarIcon: renderTabIcon(SearchIcon),
+            tabBarLabel: "Pesquisar",
           }}
         />
         <Tab.Screen
           name="Favorites"
           component={Favorites}
           options={{
-            tabBarIcon: renderTabIcon(FavoriteIcon)
+            tabBarIcon: renderTabIcon(FavoriteIcon),
+            tabBarLabel: "Favoritos",
           }}
         />
       </Tab.Navigator>

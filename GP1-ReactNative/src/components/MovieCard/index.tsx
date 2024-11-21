@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, ImageSourcePropType, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 
-type CardProps = {
+export interface CardProps {
     item: {
         image: string;
     };
