@@ -3,8 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
 import { RootStackParamList } from '../Navigation/types';
-import { BottomTabRoutes } from './BottomTabNavigator';
-import { Home } from '../screens/Home';
+import { BottomTabRoutes } from './MyTab';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
