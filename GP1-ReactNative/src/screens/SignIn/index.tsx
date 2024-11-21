@@ -8,7 +8,7 @@ import { RootStackParamList } from "../../Navigation/types";
 import Body from "../../components/Body";
 import CustomTextInputSign from "../../components/TextInputSign";
 import ButtonSign from "../../components/ButtonSign";
-import MainIcon from "../../../assets/Group 7.png"
+import MainIcon from "../../../src/assets/Group 7.png"
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "SignIn">
 
@@ -43,7 +43,7 @@ export function SignIn() {
           console.log("Usuário logado:", user);
 
           //   substituir quando tiver a home
-          navigation.navigate("SignUp");
+          navigation.navigate("Favorites");
         } else {
           Alert.alert("Erro", "Email ou senha inválidos.");
         }
@@ -71,7 +71,7 @@ export function SignIn() {
         secureTextEntry
         iconName="lock"
       />
-      <ButtonSign title="Logar" onPress={handleEnviar} />
+      <ButtonSign title="Entrar" onPress={handleEnviar} />
       <Text style={styles.footerSignIn}>
         Ainda não tem cadastro?{" \n "}
         <Text style={styles.linkSignIn} onPress={() => navigation.navigate("SignUp")}>
