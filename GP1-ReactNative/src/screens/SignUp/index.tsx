@@ -8,7 +8,7 @@ import { RootStackParamList } from "../../Navigation/types";
 import Body from "../../components/Body";
 import CustomTextInputSign from "../../components/TextInputSign";
 import ButtonSign from "../../components/ButtonSign";
-import MainIcon from "../../../assets/Group 7.png"
+import MainIcon from "../../../src/assets/Group 7.png"
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "SignUp">
 
