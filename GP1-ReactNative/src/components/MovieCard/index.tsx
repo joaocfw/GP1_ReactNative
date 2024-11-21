@@ -1,15 +1,17 @@
 import React, { FC } from 'react';
-import { Image, View, ImageSourcePropType } from 'react-native';
+import { Image, ImageSourcePropType, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 
 type CardProps = {
-    image: ImageSourcePropType; 
+    item: {
+        image: string;
+    };
 };
 
-export const MovieCard: FC<CardProps> = ({ image }) => {
+export const MovieCard: FC<CardProps> = ({ item }) => {
     return (
-        <View style={styles.movieCardContainer}>
-            <Image source={image} style={styles.movieCardImage} />
-        </View>
+        <TouchableOpacity activeOpacity={0.7} style={styles.movieCardContainer}>
+            <Image source={{ uri: item.image }} style={styles.movieCardImage} />
+        </TouchableOpacity>
     );
 };
