@@ -38,3 +38,5 @@ export const Home = () => {
             </Body>
     )
 }
+
+export default Home;
