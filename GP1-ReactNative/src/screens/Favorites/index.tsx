@@ -9,8 +9,6 @@ import { RootStackParamList } from "../../Navigation/types";
 import { useNavigation } from "@react-navigation/native";
 import CustomTitle from "../../components/Title";
 
-type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Favorites">
-
 type FavoriteItem = {
     id: string;
     image: any;
@@ -21,7 +19,6 @@ export const Favorites = () => {
 
     const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
     const [removed, setRemoved] = useState(false);
-    const navigation = useNavigation<HomeScreenNavigationProp>();
 
     //adicionar aos favoritos
     const addFavorite = (image: any) => {

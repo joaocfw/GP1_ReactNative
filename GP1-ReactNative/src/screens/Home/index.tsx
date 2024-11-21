@@ -1,14 +1,10 @@
 import React from "react";
 import { Image, Text, View } from "react-native";
 import Body from "../../components/Body";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "../../Navigation/types";
-import { useNavigation } from "@react-navigation/native";
 import { HomeList } from "../../components/HomeList";
 import { styles } from './styles'
 import HeaderHome from '../../assets/HeaderHome.png'
 
-type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Home">
 
 const DATA = [
     {
@@ -25,7 +21,6 @@ const DATA = [
     },
 ];
 export const Home = () => {
-    const navigation = useNavigation<HomeScreenNavigationProp>();
 
     return (
             <Body customStyle={{}}>
