@@ -43,7 +43,7 @@ export function SignIn() {
           console.log("Usuário logado:", user);
 
           //   substituir quando tiver a home
-          navigation.navigate("Favorites");
+          navigation.navigate("HomeMain");
         } else {
           Alert.alert("Erro", "Email ou senha inválidos.");
         }
