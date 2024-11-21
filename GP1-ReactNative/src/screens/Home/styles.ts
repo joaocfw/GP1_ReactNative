@@ -19,7 +19,8 @@ export const styles = StyleSheet.create({
     },
     headerHomeText: {
         color: '#fff',
-        fontWeight: 'bold',
+        fontWeight: 'black',
+        marginTop: 4,
     },
 
 })
