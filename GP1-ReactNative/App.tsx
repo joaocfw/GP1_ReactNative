@@ -1,6 +1,6 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { MyStack } from "./src/Routes/MyStack/MyStack";
+import { MyStack } from "./src/Routes/MyStack";
 import { StatusBar } from "react-native";
 
 export default function App() {
