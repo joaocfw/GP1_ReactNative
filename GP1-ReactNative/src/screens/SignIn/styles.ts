@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     },
     linkSignIn: {
       fontSize: 22,
-      color: "#007BFF",
+      color: "white",
       textDecorationLine: 'underline',
     },
   });

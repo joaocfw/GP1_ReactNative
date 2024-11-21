@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import { Button, Image, View, Text } from "react-native";
-import { Body } from "../../components/Body";
+import  Body  from "../../components/Body";
 import favoritos_vazio from "../../assets/favoritos_vazio.png";
 import Card from "../../components/Card";
 import { styles } from "./styles";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../../Navigation/types";
+import { useNavigation } from "@react-navigation/native";
+import CustomTitle from "../../components/Title";
+
+type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Favorites">
 
 type FavoriteItem = {
     id: string;
@@ -15,6 +21,7 @@ export const Favorites = () => {
 
     const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
     const [removed, setRemoved] = useState(false);
+    const navigation = useNavigation<HomeScreenNavigationProp>();
 
     //adicionar aos favoritos
     const addFavorite = (image: any) => {
@@ -39,7 +46,8 @@ export const Favorites = () => {
         ))
     };
 
-    return <Body>
+    return <Body customStyle={{}}>
+        <CustomTitle title="Favoritos" iconSource={require("../../../src/assets/image 2.png")}></CustomTitle>
         <View style={styles.cardsContainer}>
             {
                 removed && (
