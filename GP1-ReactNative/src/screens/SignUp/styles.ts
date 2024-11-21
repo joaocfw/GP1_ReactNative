@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
       color: '#414141',
     },
     linkSignUp: {
-      color: "#007BFF",
+      color: "white",
       fontSize: 22
     },
   });
