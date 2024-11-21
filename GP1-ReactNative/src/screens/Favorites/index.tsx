@@ -17,7 +17,7 @@ type FavoriteItem = {
     isChecked: boolean;
 };
 
-const Favorites = () => {
+export const Favorites = () => {
 
     const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
     const [removed, setRemoved] = useState(false);
