@@ -15,6 +15,7 @@ export const styles = StyleSheet.create({
         paddingRight: 10,
         paddingLeft: 5,
         height: 60,
+        marginBottom: 5,
     },
     headerHomeText: {
         color: '#fff',
