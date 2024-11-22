@@ -27,7 +27,7 @@ export const HomeList: React.FC<HomeListProps> = ({ genreId, title }) => {
         }))
         setMovies(formattedMovies)
       } catch (error) {
-        console.error("Erro ao buscar filmes do gênero:", error);
+        console.error("Erro ao buscar filmes do gênero:", error)
       }
     }
 
