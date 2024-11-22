@@ -9,8 +9,8 @@ type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "MovieDe
 export interface CardProps {
     item: {
         image: string;
-    };
-};
+    }
+}
 
 export const MovieCard: React.FC<CardProps> = ({ item }) => {
     const navigation = useNavigation<HomeScreenNavigationProp>();
@@ -19,5 +19,5 @@ export const MovieCard: React.FC<CardProps> = ({ item }) => {
         <TouchableOpacity activeOpacity={0.7} style={styles.movieCardContainer} onPress={() => navigation.navigate('MovieDetails')}>
             <Image source={{ uri: item.image }} style={styles.movieCardImage} />
         </TouchableOpacity>
-    );
-};
+    )
+}
