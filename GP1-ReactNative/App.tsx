@@ -1,7 +1,15 @@
 import React from "react";
-import { Routes } from "./src/Routes";
-
+import { NavigationContainer } from "@react-navigation/native";
+import { MyStack } from "./src/Routes/MyStack";
+import { StatusBar } from "react-native";
 
 export default function App() {
-  return  <Routes/>
-  }
+  return (
+    <NavigationContainer>
+      <StatusBar backgroundColor='#161616' barStyle='light-content' />
+      <MyStack />
+      {/* <FavoritesProvider>
+        <Favorites/>
+      </FavoritesProvider> */}
+    </NavigationContainer>
+  );}

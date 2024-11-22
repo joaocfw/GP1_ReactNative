@@ -1,76 +1,68 @@
-import React, { useState } from "react";
-import { Button, Image, View, Text } from "react-native";
-import  Body  from "../../components/Body";
+import React from "react";
+import { View, Text, Image, Modal, TouchableOpacity, FlatList } from "react-native";
+import Body from "../../components/Body";
 import favoritos_vazio from "../../assets/favoritos_vazio.png";
 import Card from "../../components/Card";
-import { styles } from "./styles";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "../../Navigation/types";
-import { useNavigation } from "@react-navigation/native";
 import CustomTitle from "../../components/Title";
+import { styles } from "./styles";
+import { useFavorites } from '../../context/FavoritesContext'
+import favorito_removido from "../../assets/favorito_removido.png";
 
-type FavoriteItem = {
-    id: string;
-    image: any;
-    isChecked: boolean;
-};
 
 export const Favorites = () => {
+    const { favorites, addFavorite, removeFavorite, checkboxFavorites, modalVisible, setModalVisible } = useFavorites();
 
-    const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
-    const [removed, setRemoved] = useState(false);
-
-    //adicionar aos favoritos
-    const addFavorite = (image: any) => {
-        setFavorites([...favorites, { id: Math.random().toString(), image: image, isChecked: false },
-        ]);
-        setRemoved(false);
-    }
-
-    //remover dos favoritos
-    const removeFavorite = (id: any) => {
-        setFavorites(favorites.filter((favorite) => favorite.id !== id));
-        setRemoved(true);
-    };
-
-    //atualizar checkbox
-    const checkboxFavorites = (id: String) => {
-        setFavorites(favorites.map((favorite) =>
-            favorite.id === id ?
-                { ...favorite, isChecked: !favorite.isChecked }
-                : favorite
-
-        ))
-    };
-
-    return <Body customStyle={{}}>
-        <CustomTitle title="Favoritos" iconSource={require("../../../src/assets/image 2.png")}></CustomTitle>
-        <View style={styles.cardsContainer}>
-            {
-                removed && (
-                    <View style={styles.removedContainer}>
-                        <Image source={favoritos_vazio} style={styles.cardImage} />
-                        <Text style={styles.removedText}>Favorito removido com sucesso!</Text>
-
-                    </View>
-                )}
-
-            <Button title="Adicionar aos favoritos" onPress={addFavorite} />
-
+    return (
+        <Body customStyle={{}}>
+            <CustomTitle title="Favoritos" iconSource={require("../../../src/assets/image 2.png")} />
             <View style={styles.cardsContainer}>
-                {favorites.map((favorite) => (
-                    <Card
-                        key={favorite.id}
-                        image={favorite.image}
-                        isChecked={favorite.isChecked}
-                        onCheck={() => checkboxFavorites(favorite.id)}
-                        onRemoved={() => removeFavorite(favorite.id)}
+                {favorites && favorites.length === 0 ? (
+                    <View style={styles.emptyContainer}>
+                        <Image source={favoritos_vazio} style={styles.cardImage} />
+                        <Text style={styles.emptyText}>Nenhum favorito adicionado ainda!</Text>
+                    </View>
+                ) : (
+                    <FlatList
+                        data={favorites || []}
+                        keyExtractor={(item) => item.id}
+                        renderItem={({ item }) => (
+                            <Card
+                                image={item.image}
+                                isChecked={item.isChecked}
+                                onCheck={() => checkboxFavorites(item.id)}
+                                onRemoved={() => removeFavorite(item.id)}
+                            />
+                        )}
                     />
-                ))}
+                )}
             </View>
-        </View>
-    </Body>
 
-}
+            <TouchableOpacity
+                style={styles.removeButton}
+                onPress={() => setModalVisible(true)}
+            >
+                <Text style={styles.removeButtonText}>Remover</Text>
+            </TouchableOpacity>
+
+            {/* Modal */}
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => setModalVisible(false)}
+            >
+                <View style={styles.modalContainer}>
+                    <View style={styles.modalContent}>
+                        <Image source={favorito_removido} style={styles.modalImage} />
+                        <Text style={styles.modalText}>Favorito(s) Removido(s) com sucesso!</Text>
+                        <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(false)}>
+                            <Text style={styles.closeButtonText}>Fechar</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
+        </Body>
+    );
+};
 
 export default Favorites;
