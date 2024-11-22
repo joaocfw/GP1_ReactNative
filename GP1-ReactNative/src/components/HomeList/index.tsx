@@ -5,8 +5,8 @@ import { MovieListText } from "../MovieListTitle"
 import { getMoviesByGenre } from "../../services/apiTMDB"
 import { styles } from "./styles"
 interface Movie {
-  id: string
-  image: string
+  id: string;
+  image: string;
 }
 
 interface HomeListProps {

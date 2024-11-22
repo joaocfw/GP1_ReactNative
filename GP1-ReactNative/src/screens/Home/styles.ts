@@ -11,16 +11,10 @@ export const styles = StyleSheet.create({
         backgroundColor: '#161616',
         alignItems: 'center',
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingRight: 10,
         paddingLeft: 5,
-        height: 60,
+        height: 75,
         marginBottom: 5,
-    },
-    headerHomeText: {
-        color: '#fff',
-        fontWeight: 'black',
-        marginTop: 4,
+        gap: 20
     },
     carouselImage: {
         width: '100%',
