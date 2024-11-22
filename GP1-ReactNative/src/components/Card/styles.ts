@@ -1,19 +1,15 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-    cardContainer: {
-        flexDirection: "row",
-        alignItems: "center",
-        marginBottom: 10,
-        padding: 10,
-        borderWidth: 1,
-        borderColor: "#ddd",
-        borderRadius: 5,
-        backgroundColor: "#f8f8f8",
+	CardContainer: {
+        width: 130,
+        height: 200,
+        borderRadius: 8,
+        marginRight: 15,
+        overflow:'hidden',
     },
-    cardImage: {
-        width: 50,
-        height: 50,
-        marginRight: 10,
+    CardImage: {
+        width: '100%',
+        height: '100%',
     },
 })

@@ -1,24 +1,24 @@
-import React from "react";
-import { View, Image, Button } from "react-native";
-import CheckBox from "@react-native-community/checkbox";
-import { styles } from "./styles";
+import React from 'react';
+import { Image, TouchableOpacity } from 'react-native';
+import { styles } from './styles';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../../Navigation/types";
 
-type CardProps = {
-     image: any;
-     onRemoved: () => void;
-    isChecked: boolean;
-    onCheck: (value: boolean) => void;
-
+type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "MovieDetails">
+export interface CardProps {
+    item: {
+        id: string;
+        image: string;
+    }
 }
 
-const Card: React.FC<CardProps> = ({ image, onRemoved, isChecked, onCheck}) => {
+export const Card: React.FC<CardProps> = ({ item }) => {
+    const navigation = useNavigation<HomeScreenNavigationProp>();
+   
     return (
-        <View style={styles.cardContainer}>
-            <Image source={image} style={styles.cardImage} />
-            <CheckBox value={isChecked} onValueChange={onCheck}/>
-            {isChecked && (<Button title="Remover dos favoritos" onPress={onRemoved} />)}
-        </View>
-    );
-};
-
-export default Card;
+        <TouchableOpacity activeOpacity={0.7} style={styles.CardContainer} onPress={() => navigation.navigate('MovieDetails',  { movieId: item.id })}>
+            <Image source={{ uri: item.image }} style={styles.CardImage} />
+        </TouchableOpacity>
+    )
+}

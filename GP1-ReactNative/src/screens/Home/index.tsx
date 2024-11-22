@@ -9,6 +9,7 @@ import { styles } from './styles'
 import HeaderHome from '../../assets/HeaderHome.png'
 import { getPopularMovies } from "../../services/apiTMDB"
 import { useAuth } from "../../Context/ContextSignIn"
+import HeaderSignOut from "../../components/HeaderSignOut"
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "MovieDetails">
 export const Home = () => {
@@ -43,9 +44,8 @@ export const Home = () => {
         <Body customStyle={{}}>
             <ScrollView>
                 <View style={styles.headerHome}>
-                    <Image source={HeaderHome} />
-                    <Text style={styles.headerHomeText}> Bem-vindo, {user?.nome}.</Text>
-                    <Button title="sair" onPress={SignOut} />
+                    <Image style ={{marginTop:5}} source={HeaderHome} />
+                    <HeaderSignOut userName={user?.nome || "Usuário"} onSignOut={SignOut} />
                 </View>
                 <View style={{ marginBottom: 10, width: windowWidth, height: 500}}>
                     <FlatList
@@ -55,7 +55,7 @@ export const Home = () => {
                         showsHorizontalScrollIndicator={false} 
                         keyExtractor={item => item.id}
                         renderItem={({ item }) => (
-                            <TouchableOpacity activeOpacity={1} style={{ width: windowWidth, justifyContent: 'center', alignItems: 'center' }} onPress={() => navigation.navigate('MovieDetails', { movieId: item.id})}>
+                            <TouchableOpacity activeOpacity={1} style={{ width: windowWidth, justifyContent: 'center', alignItems: 'center' }} onPress={() => navigation.navigate('MovieDetails', {movieId: item.id})}>
                                 <Image source={item.source} style={{width: windowWidth,  height: 500, resizeMode: 'stretch'}} />
                             </TouchableOpacity>
                         )}

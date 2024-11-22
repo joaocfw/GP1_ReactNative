@@ -17,7 +17,7 @@ export const MovieCard: React.FC<CardProps> = ({ item }) => {
     const navigation = useNavigation<HomeScreenNavigationProp>();
    
     return (
-        <TouchableOpacity activeOpacity={0.7} style={styles.movieCardContainer} onPress={() => navigation.navigate('MovieDetails', { movieId: item.id})}>
+        <TouchableOpacity activeOpacity={0.7} style={styles.movieCardContainer} onPress={() => navigation.navigate('MovieDetails',  { movieId: item.id })}>
             <Image source={{ uri: item.image }} style={styles.movieCardImage} />
         </TouchableOpacity>
     )

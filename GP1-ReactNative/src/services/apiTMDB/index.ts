@@ -18,8 +18,11 @@ interface getMoviesByGenreResponse {
 interface getPopularMoviesResponse {
   results: MovieItem[];
 }
+interface SearchMoviesResponse {
+  results: MovieItem[];
+}
 
-// Tipagem das respostas
+const API_KEY = "e0d5964faa043afa918d9a7035a55a8d";
 interface MovieDetailsResponse {
   id: string;
   title: string;
@@ -53,13 +56,11 @@ interface GetMovieTrailerResponse {
   }>;
 }
 
-// Função para buscar detalhes do filme
 export function getMovieDetails(movieId: string): Promise<AxiosResponse<MovieDetailsResponse, any>> {
   const url = `movie/${movieId}`;
   return apiTMDB.get(url);
 }
 
-// Função para buscar elenco do filme
 export function getMovieCast(movieId: string): Promise<AxiosResponse<CastResponse, any>> {
   const url = `movie/${movieId}/credits`;
   return apiTMDB.get(url);
@@ -76,9 +77,12 @@ export function getMoviesByGenre(genreId: string): Promise<AxiosResponse<getMovi
   return apiTMDB.get(`discover/movie?api_key=e0d5964faa043afa918d9a7035a55a8d&with_genres=${genreId}&language=pt-BR`);
 }
 
-// Função para pegar o trailer de um filme
+export function searchMovies(query: string): Promise<AxiosResponse<SearchMoviesResponse, any>> {
+  const url = `search/movie?api_key=${API_KEY}&query=${query}&language=pt-BR`;
+  return apiTMDB.get(url);
+}
+
 export function getMovieTrailer(movieId: string): Promise<AxiosResponse<GetMovieTrailerResponse, any>> {
   const url = `movie/${movieId}/videos?api_key=e0d5964faa043afa918d9a7035a55a8d&language=pt-BR`;
-
   return apiTMDB.get(url);
 }

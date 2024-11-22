@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image, Modal, TouchableOpacity, FlatList } from "react-native";
 import Body from "../../components/Body";
 import favoritos_vazio from "../../assets/favoritos_vazio.png";
-import Card from "../../components/Card";
+import { Card } from "../../components/Card";
 import CustomTitle from "../../components/Title";
 import { styles } from "./styles";
 import { useFavorites } from '../../Context/FavoritesContext'
@@ -16,7 +16,7 @@ export const Favorites = () => {
         <Body customStyle={{}}>
             <CustomTitle title="Favoritos" iconSource={require("../../../src/assets/image 2.png")} />
             <View style={styles.cardsContainer}>
-                {favorites && favorites.length === 0 ? (
+                {/* {favorites && favorites.length === 0 ? (
                     <View style={styles.emptyContainer}>
                         <Image source={favoritos_vazio} style={styles.cardImage} />
                         <Text style={styles.emptyText}>Nenhum favorito adicionado ainda!</Text>
@@ -34,7 +34,7 @@ export const Favorites = () => {
                             />
                         )}
                     />
-                )}
+                )} */}
             </View>
 
             <TouchableOpacity
