@@ -14,9 +14,9 @@ export const styles = StyleSheet.create({
     itensContainer: {
         backgroundColor: 'rgba(22, 22, 22, 0.5)',
         position: 'absolute',
-        top: 380,
+        top: 350,
         width: '100%',
-        height: 100,
+        height: 130,
     },
     pageTopText: {
         position: 'absolute',
@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
     },
     pageTopFavButton: {
         position: 'absolute',
-        top: 50,
+        top: 80,
         left: 20,
     },
     pageTopBackButton: {
@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
     },
     pageTopPlayButton: {
         position: 'absolute',
-        top: 50,
+        top: 80,
         left: 90,
     },
 })
