@@ -37,12 +37,14 @@ export const PageTop: React.FC<PageTopProps> = ({ image, title, trailerUrl }) =>
       </TouchableOpacity>
       <View style={styles.itensContainer}>
         <Text style={styles.pageTopText}>{title}</Text>
-        <TouchableOpacity activeOpacity={0.7} style={styles.pageTopFavButton}>
-          <Image source={FavButton} />
-        </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.7} style={styles.pageTopPlayButton} onPress={handlePlayPress}>
-          <Image source={PlayButton} />
-        </TouchableOpacity>
+        <View style={styles.buttonsContainer}>
+          <TouchableOpacity activeOpacity={0.7} style={styles.pageTopFavButton}>
+            <Image source={FavButton} />
+          </TouchableOpacity>
+          <TouchableOpacity activeOpacity={0.7} style={styles.pageTopPlayButton} onPress={handlePlayPress}>
+            <Image source={PlayButton} />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   )

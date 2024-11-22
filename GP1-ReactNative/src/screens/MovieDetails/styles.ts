@@ -4,6 +4,7 @@ export const styles = StyleSheet.create({
     descricaoText: {
         color: '#fff',
         paddingHorizontal: 20,
+        marginTop: 10,
         textAlign: 'justify',
     },
     averageText: {
@@ -37,7 +38,7 @@ export const styles = StyleSheet.create({
     starContainer: {
         flexDirection: 'row',
         marginLeft: 15,
-        marginTop: 5,
+        marginVertical: 10,
         alignItems: 'center',
     },
 })
