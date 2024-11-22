@@ -9,6 +9,7 @@ import Body from "../../components/Body";
 import CustomTextInputSign from "../../components/TextInputSign";
 import ButtonSign from "../../components/ButtonSign";
 import MainIcon from "../../../src/assets/Group 7.png"
+import { useAuth } from "../../Context/ContextSignIn";
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "SignUp">
 
@@ -17,12 +18,19 @@ export function SignUp() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const navigation = useNavigation<HomeScreenNavigationProp>();
+  const {handleLogin} = useAuth();
 
   const handleSubmit = async () => {
     if (!nome || !email || !senha) {
       Alert.alert("Erro", "Todos os campos são obrigatórios.");
       return;
-    }
+    } else {
+      handleLogin({
+        nome,
+        email,
+        senha,
+      });
+    };
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {

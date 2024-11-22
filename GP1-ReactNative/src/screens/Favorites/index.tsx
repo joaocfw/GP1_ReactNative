@@ -5,7 +5,7 @@ import favoritos_vazio from "../../assets/favoritos_vazio.png";
 import Card from "../../components/Card";
 import CustomTitle from "../../components/Title";
 import { styles } from "./styles";
-import { useFavorites } from '../../context/FavoritesContext'
+import { useFavorites } from '../../Context/FavoritesContext'
 import favorito_removido from "../../assets/favorito_removido.png";
 
 
