@@ -17,10 +17,10 @@ export const styles = StyleSheet.create({
     top: 350,
     width: "100%",
     height: 'auto',
-    flexDirection: "column",  // Organiza os itens na coluna
-    justifyContent: "flex-start",  // Alinha os itens do topo
-    paddingHorizontal: 20,  // Para adicionar um pouco de espaçamento lateral
-    paddingTop: 10,  // Para garantir que o título não fique encostado no topo
+    flexDirection: "column",  
+    justifyContent: "flex-start", 
+    paddingHorizontal: 20,  
+    paddingTop: 10,  
   },
   pageTopText: {
     color: "#fff",
@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   buttonsContainer: {
-    flexDirection: "row",  // Organiza os botões em linha
+    flexDirection: "row", 
     justifyContent: "flex-start",
     marginVertical: 10,
   },
