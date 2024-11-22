@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Image, Text, View, ScrollView, FlatList, Dimensions, Touchable, TouchableOpacity } from "react-native"
+import { Image, Text, View, ScrollView, FlatList, Dimensions, Touchable, TouchableOpacity, Button } from "react-native"
 import Body from "../../components/Body"
 import { StackNavigationProp } from "@react-navigation/stack"
 import { RootStackParamList } from "../../Navigation/types"
@@ -8,12 +8,14 @@ import { HomeList } from "../../components/HomeList"
 import { styles } from './styles'
 import HeaderHome from '../../assets/HeaderHome.png'
 import { getPopularMovies } from "../../services/apiTMDB"
+import { useAuth } from "../../Context/ContextSignIn"
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "MovieDetails">
 export const Home = () => {
     const [popularMovies, setPopularMovies] = useState<any[]>([])
     const windowWidth = Dimensions.get("window").width 
     const navigation = useNavigation<HomeScreenNavigationProp>();
+    const { user } = useAuth();
 
     useEffect(() => {
         const fetchPopularMovies = async () => {
@@ -32,13 +34,18 @@ export const Home = () => {
         fetchPopularMovies()
     }, [])
 
+    const SignOut = () => {
+        navigation.navigate("SignIn")
+    }
+
     return (
 
         <Body customStyle={{}}>
             <ScrollView>
                 <View style={styles.headerHome}>
                     <Image source={HeaderHome} />
-                    <Text style={styles.headerHomeText}> Bem-vindo, Fulano.</Text>
+                    <Text style={styles.headerHomeText}> Bem-vindo, {user?.nome}.</Text>
+                    <Button title="sair" onPress={SignOut} />
                 </View>
                 <View style={{ marginBottom: 10, width: windowWidth, height: 500}}>
                     <FlatList
