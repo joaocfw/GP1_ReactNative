@@ -5,23 +5,29 @@ import { PageTop } from "../../components/PageTop"
 import { MovieListText } from "../../components/MovieListTitle"
 import { styles } from "./styles"
 import { CastMembers } from "../../components/CastMembers"
-import { getMovieDetails, getMovieCast } from "../../services/apiTMDB"
+import { getMovieDetails, getMovieCast, getMovieTrailer } from "../../services/apiTMDB"
 
 export const MovieDetails = ({ route }: { route: any }) => {
     const { movieId } = route.params
-
     const [movieDetails, setMovieDetails] = useState<any>(null);
     const [cast, setCast] = useState<any[]>([])
+    const [trailerUrl, setTrailerUrl] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await getMovieDetails(movieId);
-                const details = response.data;
+                const response = await getMovieDetails(movieId)
+                const details = response.data
 
-                const castResponse = await getMovieCast(movieId);
-                const castList = castResponse.data.cast;
+                const castResponse = await getMovieCast(movieId)
+                const castList = castResponse.data.cast
+
+                const trailerResponse = await getMovieTrailer(movieId)
+                const trailer = trailerResponse.data.results.find(
+                    (video) => video.type === "Trailer" && video.site === "YouTube"
+                  )
         
+                setTrailerUrl(trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null);
                 setMovieDetails(details)
 
                 if (Array.isArray(castList)) {
@@ -45,6 +51,7 @@ export const MovieDetails = ({ route }: { route: any }) => {
                 <PageTop
                     image={`https://image.tmdb.org/t/p/original${movieDetails.poster_path}`}
                     title={movieDetails.title}
+                    trailerUrl={trailerUrl}
                 />
                 <View>
                     <MovieListText> Descrição </MovieListText>

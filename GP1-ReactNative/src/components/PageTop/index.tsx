@@ -1,5 +1,5 @@
 import React from "react"
-import { View, Image, Text, TouchableOpacity } from "react-native"
+import { View, Image, Text, TouchableOpacity, Linking } from "react-native"
 import { styles } from "./styles"
 import BackButton from '../../assets/BackButton.png'
 import FavButton from '../../assets/FavButton.png'
@@ -13,13 +13,20 @@ type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "MovieDe
 interface PageTopProps {
   image: string;
   title: string;
+  trailerUrl: string | null
 }
 
-export const PageTop: React.FC<PageTopProps> = ({ image, title }) => {
+export const PageTop: React.FC<PageTopProps> = ({ image, title, trailerUrl }) => {
   const navigation = useNavigation<HomeScreenNavigationProp>()
 
   const BackHome = () => {
     navigation.navigate("HomeMain")
+  }
+
+  const handlePlayPress = () => {
+    if (trailerUrl) {
+      Linking.openURL(trailerUrl)
+    }
   }
 
   return (
@@ -33,7 +40,7 @@ export const PageTop: React.FC<PageTopProps> = ({ image, title }) => {
         <TouchableOpacity activeOpacity={0.7} style={styles.pageTopFavButton}>
           <Image source={FavButton} />
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.7} style={styles.pageTopPlayButton}>
+        <TouchableOpacity activeOpacity={0.7} style={styles.pageTopPlayButton} onPress={handlePlayPress}>
           <Image source={PlayButton} />
         </TouchableOpacity>
       </View>
