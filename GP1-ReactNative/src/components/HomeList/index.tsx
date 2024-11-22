@@ -10,7 +10,7 @@ interface Movie {
 }
 
 interface HomeListProps {
-  genreId: string, 
+  genreId: number, 
   title: string
 }
 

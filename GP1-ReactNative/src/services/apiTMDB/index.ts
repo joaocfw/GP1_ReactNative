@@ -73,7 +73,7 @@ export function getPopularMovies(): Promise<AxiosResponse<getPopularMoviesRespon
   return apiTMDB.get(url);
 }
 
-export function getMoviesByGenre(genreId: string): Promise<AxiosResponse<getMoviesByGenreResponse, any>> {
+export function getMoviesByGenre(genreId: number): Promise<AxiosResponse<getMoviesByGenreResponse, any>> {
   return apiTMDB.get(`discover/movie?api_key=e0d5964faa043afa918d9a7035a55a8d&with_genres=${genreId}&language=pt-BR`);
 }
 
