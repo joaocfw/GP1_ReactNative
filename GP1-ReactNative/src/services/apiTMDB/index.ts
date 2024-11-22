@@ -7,23 +7,25 @@ const apiTMDB = axios.create({
     language: "pt-BR",
   },
 });
+
 export interface MovieItem {
   id: string;
   poster_path: string;
 }
-interface getMoviesByGenreResponse {
+
+interface GetMoviesByGenreResponse {
   results: MovieItem[];
 }
 
-interface getPopularMoviesResponse {
+interface GetPopularMoviesResponse {
   results: MovieItem[];
 }
+
 interface SearchMoviesResponse {
   results: MovieItem[];
 }
 
-const API_KEY = "e0d5964faa043afa918d9a7035a55a8d";
-interface MovieDetailsResponse {
+export interface MovieDetailsResponse {
   id: string;
   title: string;
   overview: string;
@@ -31,7 +33,7 @@ interface MovieDetailsResponse {
   vote_average: number;
 }
 
-interface CastResponse {
+export interface CastResponse {
   cast: Array<{
     id: string;
     name: string;
@@ -40,7 +42,7 @@ interface CastResponse {
   }>;
 }
 
-interface GetMovieTrailerResponse {
+export interface GetMovieTrailerResponse {
   id: string;
   results: Array<{
     iso_639_1: string;
@@ -57,32 +59,25 @@ interface GetMovieTrailerResponse {
 }
 
 export function getMovieDetails(movieId: string): Promise<AxiosResponse<MovieDetailsResponse, any>> {
-  const url = `movie/${movieId}`;
-  return apiTMDB.get(url);
+  return apiTMDB.get(`movie/${movieId}`);
 }
 
 export function getMovieCast(movieId: string): Promise<AxiosResponse<CastResponse, any>> {
-  const url = `movie/${movieId}/credits`;
-  return apiTMDB.get(url);
+  return apiTMDB.get(`movie/${movieId}/credits`);
 }
 
-
-export function getPopularMovies(): Promise<AxiosResponse<getPopularMoviesResponse, any>> {
-  const url = `movie/popular?api_key=e0d5964faa043afa918d9a7035a55a8d&language=pt-BR`;
-
-  return apiTMDB.get(url);
+export function getPopularMovies(): Promise<AxiosResponse<GetPopularMoviesResponse, any>> {
+  return apiTMDB.get("movie/popular");
 }
 
-export function getMoviesByGenre(genreId: number): Promise<AxiosResponse<getMoviesByGenreResponse, any>> {
-  return apiTMDB.get(`discover/movie?api_key=e0d5964faa043afa918d9a7035a55a8d&with_genres=${genreId}&language=pt-BR`);
+export function getMoviesByGenre(genreId: number): Promise<AxiosResponse<GetMoviesByGenreResponse, any>> {
+  return apiTMDB.get("discover/movie", { params: { with_genres: genreId } });
 }
 
 export function searchMovies(query: string): Promise<AxiosResponse<SearchMoviesResponse, any>> {
-  const url = `search/movie?api_key=${API_KEY}&query=${query}&language=pt-BR`;
-  return apiTMDB.get(url);
+  return apiTMDB.get("search/movie", { params: { query } });
 }
 
 export function getMovieTrailer(movieId: string): Promise<AxiosResponse<GetMovieTrailerResponse, any>> {
-  const url = `movie/${movieId}/videos?api_key=e0d5964faa043afa918d9a7035a55a8d&language=pt-BR`;
-  return apiTMDB.get(url);
+  return apiTMDB.get(`movie/${movieId}/videos`);
 }
