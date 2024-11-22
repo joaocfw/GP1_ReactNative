@@ -5,34 +5,34 @@ import { MovieListText } from "../MovieListTitle"
 import { getMoviesByGenre } from "../../services/apiTMDB"
 import { styles } from "./styles"
 interface Movie {
-  id: string;
-  image: string;
+  id: string
+  image: string
 }
 
 interface HomeListProps {
-  genreId: number; 
-  title: string;
+  genreId: number 
+  title: string
 }
 
 export const HomeList: React.FC<HomeListProps> = ({ genreId, title }) => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<Movie[]>([])
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await getMoviesByGenre(genreId);
+        const response = await getMoviesByGenre(genreId)
         const formattedMovies = response.data.results.map((movie: any) => ({
           id: movie.id.toString(),
           image: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-        }));
-        setMovies(formattedMovies);
+        }))
+        setMovies(formattedMovies)
       } catch (error) {
         console.error("Erro ao buscar filmes do gênero:", error);
       }
-    };
+    }
 
-    fetchMovies(); 
-  }, [genreId]); 
+    fetchMovies() 
+  }, [genreId])
 
     return (
         <View style={styles.movieListContainer}> 
@@ -45,5 +45,5 @@ export const HomeList: React.FC<HomeListProps> = ({ genreId, title }) => {
             contentContainerStyle={styles.flatListContent}
         />
         </View>
-    );
-};
+    )
+}

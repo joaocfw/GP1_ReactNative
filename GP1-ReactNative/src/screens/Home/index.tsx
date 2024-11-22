@@ -1,34 +1,36 @@
-import React, { useEffect, useState } from "react";
-import { Image, Text, View, ScrollView, FlatList, Dimensions } from "react-native";
-import Body from "../../components/Body";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "../../Navigation/types";
-import { useNavigation } from "@react-navigation/native";
-import { HomeList } from "../../components/HomeList";
+import React, { useEffect, useState } from "react"
+import { Image, Text, View, ScrollView, FlatList, Dimensions, Touchable, TouchableOpacity } from "react-native"
+import Body from "../../components/Body"
+import { StackNavigationProp } from "@react-navigation/stack"
+import { RootStackParamList } from "../../Navigation/types"
+import { useNavigation } from "@react-navigation/native"
+import { HomeList } from "../../components/HomeList"
 import { styles } from './styles'
 import HeaderHome from '../../assets/HeaderHome.png'
-import { getPopularMovies } from "../../services/apiTMDB";
-export const Home = () => {
-    const [popularMovies, setPopularMovies] = useState<any[]>([]); // Estado para armazenar filmes populares
-    const windowWidth = Dimensions.get("window").width; // Largura da tela
+import { getPopularMovies } from "../../services/apiTMDB"
 
-    // Buscar filmes populares assim que o componente for montado
+type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "MovieDetails">
+export const Home = () => {
+    const [popularMovies, setPopularMovies] = useState<any[]>([])
+    const windowWidth = Dimensions.get("window").width 
+    const navigation = useNavigation<HomeScreenNavigationProp>();
+
     useEffect(() => {
         const fetchPopularMovies = async () => {
             try {
                 const response = await getPopularMovies();
                 const formattedMovies = response.data.results.map((movie: any) => ({
                     id: movie.id.toString(),
-                    source: { uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}` }, // Formatar imagem do filme
+                    source: { uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}` }, 
                 }));
-                setPopularMovies(formattedMovies); // Atualizar o estado com filmes populares
+                setPopularMovies(formattedMovies)
             } catch (error) {
-                console.error("Erro ao buscar filmes populares:", error);
+                console.error("Erro ao buscar filmes populares:", error)
             }
         };
 
-        fetchPopularMovies(); // Chama a função para buscar filmes populares
-    }, []); // O array vazio faz a requisição apenas uma vez, ao carregar o componente
+        fetchPopularMovies()
+    }, [])
 
     return (
 
@@ -42,13 +44,13 @@ export const Home = () => {
                     <FlatList
                         data={popularMovies}
                         horizontal
-                        pagingEnabled  // Ativa a rolagem de uma imagem por vez
-                        showsHorizontalScrollIndicator={false} // Remove o indicador de rolagem
+                        pagingEnabled  
+                        showsHorizontalScrollIndicator={false} 
                         keyExtractor={item => item.id}
                         renderItem={({ item }) => (
-                            <View style={{ width: windowWidth, justifyContent: 'center', alignItems: 'center' }}>
+                            <TouchableOpacity activeOpacity={1} style={{ width: windowWidth, justifyContent: 'center', alignItems: 'center' }} onPress={() => navigation.navigate('MovieDetails')}>
                                 <Image source={item.source} style={{width: windowWidth,  height: 500, resizeMode: 'stretch'}} />
-                            </View>
+                            </TouchableOpacity>
                         )}
                     />
                 </View>

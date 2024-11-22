@@ -3,4 +3,5 @@ export type RootStackParamList = {
     SignUp: undefined;
     Favorites: undefined;
     HomeMain: undefined;
+    MovieDetails: undefined;
 }
