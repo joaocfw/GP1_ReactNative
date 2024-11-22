@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Image, Text, View, ScrollView, FlatList, Dimensions, Touchable, TouchableOpacity, Button } from "react-native"
+import { Image, Text, View, ScrollView, FlatList, Dimensions, TouchableOpacity, Button } from "react-native"
 import Body from "../../components/Body"
 import { StackNavigationProp } from "@react-navigation/stack"
 import { RootStackParamList } from "../../Navigation/types"
@@ -13,7 +13,7 @@ import HeaderSignOut from "../../components/HeaderSignOut"
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "MovieDetails">
 export const Home = () => {
-    const [popularMovies, setPopularMovies] = useState<any[]>([])
+    const [popularMovies, setPopularMovies] = useState<{ id: string; source: { uri: string } }[]>([]);
     const windowWidth = Dimensions.get("window").width 
     const navigation = useNavigation<HomeScreenNavigationProp>();
     const { user } = useAuth();
@@ -61,9 +61,18 @@ export const Home = () => {
                         )}
                     />
                 </View>
-                <HomeList genreId={28} title="Filmes de Ação" />
-                <HomeList genreId={35} title="Filmes de Comédia" />
-                <HomeList genreId={27} title="Filmes de Terror" />
+                <HomeList genreId={28} title="Filmes de Ação"/>
+                <HomeList genreId={12} title="Filmes de Aventura"/>
+                <HomeList genreId={16} title="Filmes de Animação"/>
+                <HomeList genreId={35} title="Filmes de Comédia"/>
+                <HomeList genreId={80} title="Filmes de Crime"/>
+                <HomeList genreId={18} title="Filmes de Drama"/>
+                <HomeList genreId={10751} title="Filmes para toda a Família"/>
+                <HomeList genreId={14} title="Filmes de Fantasia"/>
+                <HomeList genreId={878} title="Filmes de Ficção Científica"/>
+                <HomeList genreId={53} title="Filmes de Guerra"/>
+                <HomeList genreId={10749} title="Filmes de Romance"/>
+                <HomeList genreId={27} title="Filmes de Terror"/>
             </ScrollView>
         </Body>
     )

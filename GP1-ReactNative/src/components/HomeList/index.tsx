@@ -10,7 +10,7 @@ interface Movie {
 }
 
 interface HomeListProps {
-  genreId: number 
+  genreId: string, 
   title: string
 }
 
@@ -22,12 +22,12 @@ export const HomeList: React.FC<HomeListProps> = ({ genreId, title }) => {
       try {
         const response = await getMoviesByGenre(genreId)
         const formattedMovies = response.data.results.map((movie: any) => ({
-          id: movie.id.toString(),
+          id: movie.id,
           image: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
         }))
         setMovies(formattedMovies)
       } catch (error) {
-        console.error("Erro ao buscar filmes do gênero:", error);
+        console.error("Erro ao buscar filmes do gênero:", error)
       }
     }
 

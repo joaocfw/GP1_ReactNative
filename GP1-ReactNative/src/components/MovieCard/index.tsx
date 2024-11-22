@@ -1,9 +1,9 @@
-import React from 'react';
-import { Image, TouchableOpacity } from 'react-native';
-import { styles } from './styles';
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "../../Navigation/types";
+import React from 'react'
+import { Image, TouchableOpacity } from 'react-native'
+import { styles } from './styles'
+import { useNavigation } from '@react-navigation/native'
+import { StackNavigationProp } from "@react-navigation/stack"
+import { RootStackParamList } from "../../Navigation/types"
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "MovieDetails">
 export interface CardProps {
