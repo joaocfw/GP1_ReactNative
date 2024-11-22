@@ -5,12 +5,12 @@ import { MovieListText } from "../MovieListTitle"
 import { getMoviesByGenre } from "../../services/apiTMDB"
 import { styles } from "./styles"
 interface Movie {
-  id: string
+  id: string,
   image: string
 }
 
 interface HomeListProps {
-  genreId: number 
+  genreId: number, 
   title: string
 }
 
@@ -22,7 +22,7 @@ export const HomeList: React.FC<HomeListProps> = ({ genreId, title }) => {
       try {
         const response = await getMoviesByGenre(genreId)
         const formattedMovies = response.data.results.map((movie: any) => ({
-          id: movie.id.toString(),
+          id: movie.id,
           image: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
         }))
         setMovies(formattedMovies)

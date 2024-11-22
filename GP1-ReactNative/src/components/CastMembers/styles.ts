@@ -4,13 +4,11 @@ export const styles = StyleSheet.create({
     castListContainer: {
         width: '100%',
         paddingLeft: 10,
-        alignItems: 'center',  
-        paddingVertical: 10,   
-        marginBottom: 10,
+        alignItems: 'center',     
     },
     castCard: {
         marginRight: 14,
-        paddingVertical: 10,
+        paddingTop: 10,
         alignItems: 'center', 
         justifyContent: 'center', 
         width: 100, 

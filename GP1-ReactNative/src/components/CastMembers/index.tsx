@@ -12,6 +12,8 @@ interface CastMembersProps {
 }
 
 export const CastMembers: React.FC<CastMembersProps> = ({ data }) => {
+  const maxLength = 15
+
   return (
     <View style={styles.castListContainer}>
       <FlatList
@@ -30,8 +32,16 @@ export const CastMembers: React.FC<CastMembersProps> = ({ data }) => {
                 style={styles.castCardImage}
               />
             </View>
-              <Text style={styles.castCardText}>{item.name}</Text>
-              <Text style={styles.castCardText}>{item.character}</Text>
+             <Text style={styles.castCardText}>
+              {item.name.length > maxLength
+                ? `${item.name.slice(0, maxLength)}...`
+                : item.name}
+            </Text>
+            <Text style={styles.castCardText}>
+              {item.character.length > maxLength
+                ? `${item.character.slice(0, maxLength)}...`
+                : item.character}
+            </Text>
           </View>
         )}
       />
