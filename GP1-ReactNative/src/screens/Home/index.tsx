@@ -12,7 +12,7 @@ import { useAuth } from "../../Context/ContextSignIn"
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "MovieDetails">
 export const Home = () => {
-    const [popularMovies, setPopularMovies] = useState<any[]>([])
+    const [popularMovies, setPopularMovies] = useState<{ id: string; source: { uri: string } }[]>([]);
     const windowWidth = Dimensions.get("window").width 
     const navigation = useNavigation<HomeScreenNavigationProp>();
     const { user } = useAuth();
@@ -55,7 +55,7 @@ export const Home = () => {
                         showsHorizontalScrollIndicator={false} 
                         keyExtractor={item => item.id}
                         renderItem={({ item }) => (
-                            <TouchableOpacity activeOpacity={1} style={{ width: windowWidth, justifyContent: 'center', alignItems: 'center' }} onPress={() => navigation.navigate('MovieDetails')}>
+                            <TouchableOpacity activeOpacity={1} style={{ width: windowWidth, justifyContent: 'center', alignItems: 'center' }} onPress={() => navigation.navigate('MovieDetails', { movieId: item.id})}>
                                 <Image source={item.source} style={{width: windowWidth,  height: 500, resizeMode: 'stretch'}} />
                             </TouchableOpacity>
                         )}
