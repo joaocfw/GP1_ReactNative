@@ -51,17 +51,17 @@ export const MovieDetails = ({ route }: { route: any }) => {
 
     if (loading) {
         return (
-            <View style={styles.loaderContainer}>
-                <ActivityIndicator size="large" color="#0000ff" />
-            </View>
+            <Body customStyle={{ justifyContent: "center", alignItems: 'center' }}>
+                <ActivityIndicator size="large" color='#fff' />
+            </Body>
         )
     }
 
     if (!movieDetails) {
         return (
-            <View style={styles.errorContainer}>
-                <Text style={styles.errorText}>Detalhes do filme não encontrados</Text>
-            </View>
+            <Body customStyle={{ justifyContent: "center", alignItems: 'center' }}>
+                <MovieListText>Detalhes do filme não encontrados.</MovieListText>
+            </Body>
         )
     }
 
