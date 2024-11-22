@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
   itensContainer: {
     backgroundColor: "rgba(22, 22, 22, 0.5)",
     position: "absolute",
-    top: 350,
+    top: 365,
     width: "100%",
     height: 'auto',
     flexDirection: "column",  
