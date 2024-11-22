@@ -54,7 +54,7 @@ export const Search = () => {
     return (
         <Body customStyle={{}}>
             <View style={styles.headerHome}>
-                <CustomTitle title="Favoritos" iconSource={require("../../../src/assets/image 2.png")} />
+                <CustomTitle title="Pesquisar" iconSource={require("../../../src/assets/image 2.png")} />
                 <HeaderSignOut userName={user?.nome || "Usuário"} onSignOut={SignOut} />
             </View>
             <View style={styles.searchContainer}>
