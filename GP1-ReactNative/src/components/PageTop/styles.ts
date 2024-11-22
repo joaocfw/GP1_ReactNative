@@ -31,6 +31,15 @@ export const styles = StyleSheet.create({
         top: 50,
         left: 20,
     },
+    pageTopBackButton: {
+        position: 'absolute',
+        top: 50,
+        left: 20,
+    },
+    pageTopBackButtonImg:{
+        width: 20,
+        height: 20,
+    },
     pageTopPlayButton: {
         position: 'absolute',
         top: 50,
