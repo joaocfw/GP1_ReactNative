@@ -3,6 +3,7 @@ import { View, Image, Text, TouchableOpacity, Linking, Alert } from "react-nativ
 import { styles } from "./styles";
 import BackButton from '../../assets/BackButton.png';
 import FavButton from '../../assets/FavButton.png';
+import FavButtonRed from '../../assets/FavButtonRed.png'; // Adicione a imagem FavButtonRed.png
 import PlayButton from '../../assets/PlayButton.png';
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -47,6 +48,7 @@ export const PageTop: React.FC<PageTopProps> = ({ image, title, trailerUrl, movi
     }
   };
 
+  const isAlreadyFavorite = favorites.some((item) => item.id === movieId);
 
   return (
     <View style={styles.pageTopContainer}>
@@ -62,7 +64,7 @@ export const PageTop: React.FC<PageTopProps> = ({ image, title, trailerUrl, movi
             style={styles.pageTopFavButton}
             onPress={handleFavoritePress}
           >
-            <Image source={FavButton} />
+            <Image source={isAlreadyFavorite ? FavButtonRed : FavButton} />
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={0.7}
