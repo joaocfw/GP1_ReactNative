@@ -17,10 +17,10 @@ export const styles = StyleSheet.create({
     top: 365,
     width: "100%",
     height: 'auto',
-    flexDirection: "column",  
-    justifyContent: "flex-start", 
-    paddingHorizontal: 20,  
-    paddingTop: 10,  
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    paddingHorizontal: 20,
+    paddingTop: 10,
   },
   pageTopText: {
     color: "#fff",
@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   buttonsContainer: {
-    flexDirection: "row", 
+    flexDirection: "row",
     justifyContent: "flex-start",
     marginVertical: 10,
   },

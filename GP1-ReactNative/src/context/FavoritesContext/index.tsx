@@ -1,52 +1,49 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState } from "react";
+import { Alert } from "react-native";
 
-type FavoriteItem = {
+interface Favorite {
     id: string;
-    image: any;
-    isChecked: boolean;
-};
+    image: string;
+}
 
-type FavoritesContextData = {
-    favorites: FavoriteItem[];
-    addFavorite: (image: any) => void;
+interface FavoritesContextType {
+    favorites: Favorite[];
+    addFavorite: (favorite: Favorite) => void;
     removeFavorite: (id: string) => void;
-    checkboxFavorites: (id: string) => void;
-    modalVisible: boolean;
-    setModalVisible: (visible: boolean) => void;
+    clearFavorites: () => void;
+}
+
+const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
+
+export const useFavorites = () => {
+    const context = useContext(FavoritesContext);
+    if (!context) {
+        throw new Error("useFavorites must be used within a FavoritesProvider");
+    }
+    return context;
 };
 
-const FavoritesContext = createContext<FavoritesContextData>({} as FavoritesContextData);
+export const FavoritesProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
+    const [favorites, setFavorites] = useState<Favorite[]>([]);
 
-export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
-    const [favorites, setFavorites] = useState<FavoriteItem[]>([]); // já está correto
-    const [modalVisible, setModalVisible] = useState(false);
-
-    const addFavorite = (image: any) => {
-        setFavorites([...favorites, { id: Math.random().toString(), image, isChecked: false }]);
+    const addFavorite = (favorite: Favorite) => {
+        setFavorites((prevFavorites) => [...prevFavorites, favorite]);
     };
 
     const removeFavorite = (id: string) => {
-        setFavorites(favorites.filter((favorite) => favorite.id !== id));
-        setModalVisible(true);
+        setFavorites((prevFavorites) =>
+            prevFavorites.filter((favorite) => String(favorite.id).trim() !== String(id).trim())
+        );
     };
 
-    const checkboxFavorites = (id: string) => {
-        setFavorites(favorites.map((favorite) =>
-            favorite.id === id ? { ...favorite, isChecked: !favorite.isChecked } : favorite
-        ));
+    const clearFavorites = () => {
+        setFavorites([]);
     };
 
     return (
-        <FavoritesContext.Provider value={{ favorites, addFavorite, removeFavorite, checkboxFavorites, modalVisible, setModalVisible }}>
+        <FavoritesContext.Provider value={{ favorites, addFavorite, removeFavorite, clearFavorites }}>
             {children}
         </FavoritesContext.Provider>
     );
 };
 
-export const useFavorites = () => {
-   const context = useContext(FavoritesContext);
-   if (!context) {
-    throw new Error('useFavorites deve ser usado dentro de um FavoritesProvider');
-    }
-    return context;
-}
