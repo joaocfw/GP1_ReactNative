@@ -7,6 +7,7 @@ type AuthContextProps = {
 };
 
 type UserProps = {
+    id: string,
     nome: string,
     email: string,
     senha: string,
@@ -32,9 +33,10 @@ export const AuthProvider = ({children}: any) => {
         }
     }
 
-    const handleLogin = ({nome, email, senha}: any) => {
+    const handleLogin = ({id, nome, email, senha}: any) => {
         console.log(nome, email, senha);
         setUser({
+            id,
             nome,
             email,
             senha,
