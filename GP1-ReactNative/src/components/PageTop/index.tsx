@@ -40,17 +40,17 @@ export const PageTop: React.FC<PageTopProps> = ({ image, title, trailerUrl, movi
   const handleFavoritePress = () => {
     if (isFavorite) {
       removeFavorite(movieId);
-      setModalMessage("Filme removido dos favoritos!");  // Definindo a mensagem
-      setModalImage(require('../../assets/FavRemove.png')); // Definindo imagem de "removido"
+      setModalMessage("Filme removido dos favoritos!"); 
+      setModalImage(require('../../assets/FavRemove.png')); 
     } else {
       addFavorite({
         id: movieId,
         image,
       });
-      setModalMessage("Filme adicionado aos favoritos!");  // Definindo a mensagem
-      setModalImage(require('../../assets/FavAdd.png')); // Definindo imagem de "adicionado"
+      setModalMessage("Filme adicionado aos favoritos!"); 
+      setModalImage(require('../../assets/FavAdd.png'));
     }
-    setModalVisible(true);  // Mostra o modal
+    setModalVisible(true);
   };
 
   const closeModal = () => {
