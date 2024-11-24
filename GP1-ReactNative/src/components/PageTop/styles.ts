@@ -47,4 +47,40 @@ export const styles = StyleSheet.create({
   pageTopPlayButton: {
     marginLeft: 20,
   },
+  modalBackground: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContainer: {
+    width: 300,
+    padding: 20,
+    backgroundColor: "#161616",
+    borderRadius: 10,
+    alignItems: "center",
+  },
+  modalImage: {
+    width: 100,
+    height: 100,
+    marginBottom: 20,
+    resizeMode: 'contain',
+  },
+  modalText: {
+    fontSize: 18,
+    marginBottom: 20,
+    textAlign: "center",
+    color: '#fff',
+  },
+  modalButton: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    backgroundColor: "#fff",
+    borderRadius: 5,
+  },
+  modalButtonText: {
+    color: "#000",
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
 });
