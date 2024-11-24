@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Image, Text, View, ScrollView, FlatList, Dimensions, TextInput, TouchableOpacity, Button } from "react-native";
+import { Image, Text, View, FlatList, Dimensions, TextInput, TouchableOpacity } from "react-native";
 import Body from "../../components/Body";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../Navigation/types";
@@ -7,7 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 import { styles } from "../Search/styles";
 import { searchMovies } from "../../services/apiTMDB";
 import { useAuth } from "../../Context/ContextSignIn";
-import image7 from "../../assets/image 7.png"
+import image7 from "../../assets/image 7.png";
 import { Card } from "../../components/Card";
 import CustomTitle from "../../components/Title";
 import HeaderSignOut from "../../components/HeaderSignOut";
@@ -19,9 +19,14 @@ export const Search = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredMovies, setFilteredMovies] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
-    const windowWidth = Dimensions.get("window").width;
     const navigation = useNavigation<HomeScreenNavigationProp>();
     const { user } = useAuth();
+    const numColumns = 3;
+
+    const fillWithEmptyItems = (data: any[], numColumns: number) => {
+        const totalItems = Math.ceil(data.length / numColumns) * numColumns;
+        return [...data, ...Array(totalItems - data.length).fill({ id: "empty", empty: true })];
+    };
 
     const handleSearch = async (query: string) => {
         setSearchQuery(query);
@@ -35,7 +40,7 @@ export const Search = () => {
         try {
             const response = await searchMovies(query);
             const formattedMovies = response.data.results.map((movie: any) => ({
-                id: movie.id.toString(),
+                id: movie.id,
                 source: { uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}` },
                 title: movie.title,
             }));
@@ -72,34 +77,38 @@ export const Search = () => {
 
             {searchQuery.trim() && filteredMovies.length > 0 ? (
                 <FlatList
-                    data={filteredMovies}
-                    numColumns={3}
+                    data={fillWithEmptyItems(filteredMovies, numColumns)}
+                    numColumns={numColumns}
                     keyExtractor={(item) => item.id}
-                    renderItem={({ item }) => (
-                        <View style={{ flex: 1, marginTop: 10 }}>
-                            <TouchableOpacity
-                                activeOpacity={1}
-                                style={{
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                }}
-                                onPress={() => navigation.navigate("MovieDetails", { movieId: item.id })}
-                            >
-                                <Card
-                                    item={{
-                                        id: item.id,
-                                        image: item.source.uri,
+                    renderItem={({ item }) =>
+                        item.empty ? (
+                            <View style={{ flex: 1 }} />
+                        ) : (
+                            <View style={{ flex: 1, marginTop: 10 }}>
+                                <TouchableOpacity
+                                    activeOpacity={1}
+                                    style={{
+                                        justifyContent: "center",
+                                        alignItems: "center",
                                     }}
-                                />
-                                <Text style={styles.movieTitle}>{item.title}</Text>
-                            </TouchableOpacity>
-                        </View>
-                    )}
+                                    onPress={() => navigation.navigate("MovieDetails", { movieId: item.id })}
+                                >
+                                    <Card
+                                        item={{
+                                            id: item.id,
+                                            image: item.source.uri,
+                                        }}
+                                    />
+                                    <Text style={styles.movieTitle}>{item.title}</Text>
+                                </TouchableOpacity>
+                            </View>
+                        )
+                    }
                 />
             ) : (
                 !loading && (
-                    <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 200 }}>
-                        <Image style={{}} source={image7} />
+                    <View style={{ justifyContent: "center", alignItems: "center", marginTop: 200 }}>
+                        <Image source={image7} />
                         <Text style={styles.noResultsText}>Nenhum resultado encontrado</Text>
                     </View>
                 )
