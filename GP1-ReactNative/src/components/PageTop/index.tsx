@@ -3,7 +3,7 @@ import { View, Image, Text, TouchableOpacity, Linking, Alert } from "react-nativ
 import { styles } from "./styles";
 import BackButton from '../../assets/BackButton.png';
 import FavButton from '../../assets/FavButton.png';
-import FavButtonRed from '../../assets/FavButtonRed.png'; // Adicione a imagem FavButtonRed.png
+import FavButtonRed from '../../assets/FavButtonRed.png'
 import PlayButton from '../../assets/PlayButton.png';
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -17,11 +17,12 @@ interface PageTopProps {
   title: string;
   trailerUrl: string | null;
   movieId: string;
+  isFavorite: boolean; 
 }
 
-export const PageTop: React.FC<PageTopProps> = ({ image, title, trailerUrl, movieId }) => {
+export const PageTop: React.FC<PageTopProps> = ({ image, title, trailerUrl, movieId, isFavorite }) => {
   const navigation = useNavigation<HomeScreenNavigationProp>();
-  const { addFavorite, removeFavorite, favorites } = useFavorites();
+  const { addFavorite, removeFavorite } = useFavorites();
 
   const BackHome = () => {
     navigation.navigate("HomeMain");
@@ -34,9 +35,7 @@ export const PageTop: React.FC<PageTopProps> = ({ image, title, trailerUrl, movi
   };
 
   const handleFavoritePress = () => {
-    const isAlreadyFavorite = favorites.some((item) => item.id === movieId);
-
-    if (isAlreadyFavorite) {
+    if (isFavorite) {
       removeFavorite(movieId);
       Alert.alert("Favoritos", "Filme removido dos favoritos!");
     } else {
@@ -47,8 +46,6 @@ export const PageTop: React.FC<PageTopProps> = ({ image, title, trailerUrl, movi
       Alert.alert("Favoritos", "Filme adicionado aos favoritos!");
     }
   };
-
-  const isAlreadyFavorite = favorites.some((item) => item.id === movieId);
 
   return (
     <View style={styles.pageTopContainer}>
@@ -64,7 +61,7 @@ export const PageTop: React.FC<PageTopProps> = ({ image, title, trailerUrl, movi
             style={styles.pageTopFavButton}
             onPress={handleFavoritePress}
           >
-            <Image source={isAlreadyFavorite ? FavButtonRed : FavButton} />
+            <Image source={isFavorite ? FavButtonRed : FavButton} />
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={0.7}
