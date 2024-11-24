@@ -27,7 +27,7 @@ export const CastMembers: React.FC<CastMembersProps> = ({ data }) => {
                 source={{
                   uri: item.profile_path
                     ? `https://image.tmdb.org/t/p/w200${item.profile_path}`
-                    : "https://via.placeholder.com/200x300", 
+                    : "https://bitslog.com/wp-content/uploads/2013/01/unknown-person1.gif", 
                 }}
                 style={styles.castCardImage}
               />
