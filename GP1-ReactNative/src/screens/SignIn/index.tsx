@@ -9,7 +9,6 @@ import Body from "../../components/Body";
 import CustomTextInputSign from "../../components/TextInputSign";
 import ButtonSign from "../../components/ButtonSign";
 import MainIcon from "../../../src/assets/Group 7.png";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useAuth } from "../../Context/ContextSignIn";
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "SignIn">;
@@ -43,17 +42,7 @@ export function SignIn() {
 
         if (user) {
           Alert.alert("Sucesso", "Usuário logado com sucesso!");
-
-          handleLogin({
-            id: user.id,
-            nome: user.nome,
-            email: user.email,
-            senha: user.senha,
-          });
-
-          await AsyncStorage.setItem('userId', user.id);
-          await AsyncStorage.setItem('userNome', user.nome);
-
+          handleLogin(user);
           navigation.navigate("HomeMain");
         } else {
           Alert.alert("Erro", "Email ou senha inválidos.");

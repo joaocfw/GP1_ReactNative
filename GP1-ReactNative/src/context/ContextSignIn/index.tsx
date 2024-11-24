@@ -16,40 +16,43 @@ type UserProps = {
 
 const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
 
-export const AuthProvider = ({children}: any) => {
+export const AuthProvider = ({ children }: any) => {
     const [user, setUser] = useState<UserProps | null>(null);
 
     useEffect(() => {
-        loadingUser()
-    },[])
+        loadingUser();
+    }, []);
 
     const loadingUser = async () => {
-        const response = await AsyncStorage.getItem(
-            '@loginApp:user'
-        );
-        if(response) {
-            const data = JSON.parse(response);
-            setUser(data)
+        try {
+            const response = await AsyncStorage.getItem('@loginApp:user');
+            if (response) {
+                const data = JSON.parse(response);
+                setUser(data);
+            }
+        } catch (error) {
+            console.error("Erro ao carregar usuário:", error);
         }
-    }
-
-    const handleLogin = ({id, nome, email, senha}: any) => {
-        console.log(nome, email, senha);
-        setUser({
-            id,
-            nome,
-            email,
-            senha,
-        })
-        AsyncStorage.setItem('@loginApp:user', JSON.stringify({nome, email, senha}));
     };
 
-    return(
-        <AuthContext.Provider value={{handleLogin, user}}>{children}</AuthContext.Provider>
+    const handleLogin = async ({ id, nome, email, senha }: UserProps) => {
+        const userData = { id, nome, email, senha };
+        setUser(userData);
 
-    )
-}
+        try {
+            await AsyncStorage.setItem('@loginApp:user', JSON.stringify(userData));
+        } catch (error) {
+            console.error("Erro ao salvar usuário:", error);
+        }
+    };
+
+    return (
+        <AuthContext.Provider value={{ handleLogin, user }}>
+            {children}
+        </AuthContext.Provider>
+    );
+};
 export const useAuth = () => {
     const context = useContext(AuthContext);
     return context;
-}
+};
