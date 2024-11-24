@@ -42,9 +42,12 @@ export const FavoritesProvider: React.FC<React.PropsWithChildren<{}>> = ({ child
             const response = await AsyncStorage.getItem(`@loginApp:favorites:${userId}`);
             if (response) {
                 setFavorites(JSON.parse(response));
+            } else {
+                setFavorites([]); 
             }
         } catch (error) {
             console.error("Erro ao carregar favoritos", error);
+            setFavorites([]); 
         }
     };
 

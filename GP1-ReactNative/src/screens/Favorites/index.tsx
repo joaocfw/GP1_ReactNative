@@ -32,7 +32,7 @@ const Favoritos = () => {
             {favorites.length === 0 ? (
                 <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 200 }}>
                     <Image source={NoFavorites} />
-                    <Text style={styles.noResultsText}>Nenhum resultado encontrado</Text>
+                    <Text style={styles.noResultsText}>Nenhum favorito encontrado</Text>
                 </View>
             ) : (
                 <FlatList
