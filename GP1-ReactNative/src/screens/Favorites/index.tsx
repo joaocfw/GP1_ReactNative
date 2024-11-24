@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList, Image } from 'react-native';
 import { useFavorites } from '../../Context/FavoritesContext';
 import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
@@ -7,19 +7,33 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../Navigation/types';
 import { Card } from '../../components/Card';
 import Body from '../../components/Body';
+import NoFavorites from '../../assets/NoFavorites.png'
+import HeaderSignOut from '../../components/HeaderSignOut';
+import CustomTitle from '../../components/Title';
+import { useAuth } from "../../Context/ContextSignIn";
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 
 const Favoritos = () => {
     const { favorites } = useFavorites();
     const navigation = useNavigation<HomeScreenNavigationProp>();
+    const { user } = useAuth();
+
+    const SignOut = () => {
+        navigation.navigate("SignIn");
+    };
 
     return (
         <Body customStyle={{}}>
-            <Text style={styles.titulo}>Favoritos</Text>
-
+            <View style={styles.headerHome}>
+                <CustomTitle title="Favoritos" iconSource={require("../../../src/assets/image 2.png")} />
+                <HeaderSignOut userName={user?.nome || "Usuário"} onSignOut={SignOut} />
+            </View>
             {favorites.length === 0 ? (
-                <Text style={styles.semFavoritos}>Você ainda não tem filmes favoritos</Text>
+                <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 200 }}>
+                    <Image source={NoFavorites} />
+                    <Text style={styles.noResultsText}>Nenhum resultado encontrado</Text>
+                </View>
             ) : (
                 <FlatList
                     data={favorites}
@@ -34,7 +48,7 @@ const Favoritos = () => {
                                     justifyContent: "center",
                                     alignItems: "center",
                                 }}
-                                onPress={() => navigation.navigate('MovieDetails', {movieId: item.id})}
+                                onPress={() => navigation.navigate('MovieDetails', { movieId: item.id })}
                             >
                                 <Card
                                     item={{

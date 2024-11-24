@@ -14,10 +14,11 @@ const styles = StyleSheet.create({
         marginTop: 20,
         color: 'white',
     },
-    semFavoritos: {
+    noResultsText: {
+        textAlign: "center",
+        marginVertical: 16,
         fontSize: 18,
-        textAlign: 'center',
-        color: 'gray',
+        color: "#fff",
     },
     lista: {
         justifyContent: 'space-between',
@@ -50,11 +51,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#161616',
         alignItems: 'center',
         flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingRight: 10,
         paddingLeft: 5,
-        height: 75,
+        height: 60,
         marginBottom: 5,
-        gap: 20
-    }
+    },
+    
 });
 
 export default styles;

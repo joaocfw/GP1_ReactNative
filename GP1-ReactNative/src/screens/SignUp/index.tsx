@@ -69,7 +69,7 @@ export function SignUp() {
       <CustomTextInputSign
         value={nome}
         onChangeText={setNome}
-        placeholder="Digite seu Nome Completo"
+        placeholder="Digite seu Nome"
         iconName="person"
       />
       <CustomTextInputSign

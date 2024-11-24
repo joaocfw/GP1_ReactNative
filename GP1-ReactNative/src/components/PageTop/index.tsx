@@ -1,5 +1,5 @@
-import React from "react";
-import { View, Image, Text, TouchableOpacity, Linking, Alert } from "react-native";
+import React, { useState } from "react";
+import { View, Image, Text, TouchableOpacity, Linking, Alert, Modal } from "react-native";
 import { styles } from "./styles";
 import BackButton from '../../assets/BackButton.png';
 import FavButton from '../../assets/FavButton.png';
@@ -23,6 +23,9 @@ interface PageTopProps {
 export const PageTop: React.FC<PageTopProps> = ({ image, title, trailerUrl, movieId, isFavorite }) => {
   const navigation = useNavigation<HomeScreenNavigationProp>();
   const { addFavorite, removeFavorite } = useFavorites();
+  const [modalVisible, setModalVisible] = useState(false); 
+  const [modalMessage, setModalMessage] = useState("");
+  const [modalImage, setModalImage] = useState<any>(null);  
 
   const BackHome = () => {
     navigation.navigate("HomeMain");
@@ -37,15 +40,22 @@ export const PageTop: React.FC<PageTopProps> = ({ image, title, trailerUrl, movi
   const handleFavoritePress = () => {
     if (isFavorite) {
       removeFavorite(movieId);
-      Alert.alert("Favoritos", "Filme removido dos favoritos!");
+      setModalMessage("Filme removido dos favoritos!");  // Definindo a mensagem
+      setModalImage(require('../../assets/FavRemove.png')); // Definindo imagem de "removido"
     } else {
       addFavorite({
         id: movieId,
         image,
       });
-      Alert.alert("Favoritos", "Filme adicionado aos favoritos!");
+      setModalMessage("Filme adicionado aos favoritos!");  // Definindo a mensagem
+      setModalImage(require('../../assets/FavAdd.png')); // Definindo imagem de "adicionado"
     }
+    setModalVisible(true);  // Mostra o modal
   };
+
+  const closeModal = () => {
+    setModalVisible(false); 
+  }
 
   return (
     <View style={styles.pageTopContainer}>
@@ -72,6 +82,22 @@ export const PageTop: React.FC<PageTopProps> = ({ image, title, trailerUrl, movi
           </TouchableOpacity>
         </View>
       </View>
+      <Modal
+        visible={modalVisible}
+        animationType="fade"
+        transparent={true}
+        onRequestClose={closeModal}
+      >
+        <View style={styles.modalBackground}>
+          <View style={styles.modalContainer}>
+            {modalImage && <Image source={modalImage} style={styles.modalImage} />}
+            <Text style={styles.modalText}>{modalMessage}</Text>
+            <TouchableOpacity style={styles.modalButton} onPress={closeModal}>
+              <Text style={styles.modalButtonText}>Fechar</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
