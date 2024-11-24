@@ -8,12 +8,13 @@ import { RootStackParamList } from "../../Navigation/types";
 import Body from "../../components/Body";
 import CustomTextInputSign from "../../components/TextInputSign";
 import ButtonSign from "../../components/ButtonSign";
-import MainIcon from "../../../src/assets/Group 7.png"
+import MainIcon from "../../../src/assets/Group 7.png";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "SignIn">
+type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "SignIn">;
 
 interface User {
-  find(arg0: (u: User) => boolean): unknown;
+  id: string;
   nome: string;
   email: string;
   senha: string;
@@ -31,7 +32,7 @@ export function SignIn() {
     }
 
     try {
-      const response = await api.get<User>("/users", {
+      const response = await api.get<User[]>("/users", {
         params: { email: email, senha: senha },
       });
 
@@ -42,7 +43,8 @@ export function SignIn() {
           Alert.alert("Sucesso", "Usuário logado com sucesso!");
           console.log("Usuário logado:", user);
 
-          //   substituir quando tiver a home
+          await AsyncStorage.setItem('userId', user.id);
+          
           navigation.navigate("HomeMain");
         } else {
           Alert.alert("Erro", "Email ou senha inválidos.");
@@ -56,7 +58,7 @@ export function SignIn() {
 
   return (
     <Body customStyle={{ justifyContent: "center", padding: 16, alignItems: 'center' }}>
-      <Image style = {{marginBottom: 40}} source={MainIcon} />
+      <Image style={{ marginBottom: 40 }} source={MainIcon} />
       <CustomTextInputSign
         value={email}
         onChangeText={setEmail}
@@ -81,4 +83,5 @@ export function SignIn() {
     </Body>
   );
 }
+
 export default SignIn;

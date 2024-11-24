@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export function MyStack() {
   return (
-    <Stack.Navigator initialRouteName='HomeMain'  screenOptions={{ headerShown: false }}>
+    <Stack.Navigator initialRouteName='SignIn'  screenOptions={{ headerShown: false }}>
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="HomeMain" component={BottomTabRoutes} />

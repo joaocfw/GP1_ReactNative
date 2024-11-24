@@ -9,6 +9,7 @@ import { getMovieDetails, getMovieCast, getMovieTrailer } from "../../services/a
 import Star from '../../assets/Star.png';
 import StarHalf from '../../assets/StarHalfFilled.png';
 import StarFilled from '../../assets/StarFilled.png';
+import { useFavorites } from "../../Context/FavoritesContext";
 
 interface RouteParams {
     route: {
@@ -27,10 +28,12 @@ interface MovieDetailsType {
 
 export const MovieDetails = ({ route }: RouteParams) => {
     const { movieId } = route.params;
+    const { favorites } = useFavorites(); 
     const [movieDetails, setMovieDetails] = useState<MovieDetailsType | null>(null);
     const [cast, setCast] = useState<any[]>([]);
     const [trailerUrl, setTrailerUrl] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
+    const isFavorite = favorites.some((item) => item.id === movieId);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -110,6 +113,7 @@ export const MovieDetails = ({ route }: RouteParams) => {
                     title={movieDetails.title}
                     trailerUrl={trailerUrl}
                     movieId={movieId}
+                    isFavorite={isFavorite} 
                 />
                 <View>
                     <MovieListText>Descrição</MovieListText>

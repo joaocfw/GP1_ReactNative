@@ -23,7 +23,7 @@ const Favoritos = () => {
             ) : (
                 <FlatList
                     data={favorites}
-                    keyExtractor={(item) => item.id.toString()}
+                    keyExtractor={(item) => item.id}
                     numColumns={3}
                     contentContainerStyle={styles.lista}
                     renderItem={({ item }) => (
@@ -34,11 +34,11 @@ const Favoritos = () => {
                                     justifyContent: "center",
                                     alignItems: "center",
                                 }}
-                                onPress={() => navigation.navigate("MovieDetails", { movieId: item.id.toString() })}
+                                onPress={() => navigation.navigate('MovieDetails', {movieId: item.id})}
                             >
                                 <Card
                                     item={{
-                                        id: item.id.toString(),
+                                        id: item.id,
                                         image: item.image,
                                     }}
                                 />
