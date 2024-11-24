@@ -51,4 +51,7 @@ export const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "#333",
     },
+    lista: {
+        alignItems: 'flex-start',
+    },
 });

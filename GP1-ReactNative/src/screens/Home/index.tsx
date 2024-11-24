@@ -23,7 +23,7 @@ export const Home = () => {
             try {
                 const response = await getPopularMovies();
                 const formattedMovies = response.data.results.map((movie: any) => ({
-                    id: movie.id.toString(),
+                    id: movie.id,
                     source: { uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}` }, 
                 }));
                 setPopularMovies(formattedMovies)
