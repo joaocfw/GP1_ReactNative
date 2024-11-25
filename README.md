@@ -18,35 +18,35 @@ PopcornHub é um aplicativo completo para amantes de cinema, oferecendo informa�
 
 ### Tela de Cadastro
 
-<img src="https://github.com/user-attachments/assets/7689ca2b-ef3a-4489-bad3-d02f8ee6bdbd" alt="Cadastro" width="300" />
+<img src="https://github.com/user-attachments/assets/7689ca2b-ef3a-4489-bad3-d02f8ee6bdbd" alt="Cadastro" width="200" />
 
 ### Tela de Login
 
-<img src="https://github.com/user-attachments/assets/ef440be0-f2e4-4251-9209-cd8e0e4cba59" alt="Login" width="300" />
+<img src="https://github.com/user-attachments/assets/ef440be0-f2e4-4251-9209-cd8e0e4cba59" alt="Login" width="200" />
 
 ### Tela Inicial
 
-<img src="https://github.com/user-attachments/assets/68828206-17ba-4eee-856f-32dcf9fd6dab" alt="Inicio" width="300" />
+<img src="https://github.com/user-attachments/assets/68828206-17ba-4eee-856f-32dcf9fd6dab" alt="Inicio" width="200" />
 
 ### Categorias
 
-<img src="https://github.com/user-attachments/assets/174a0660-f035-4be8-b0a0-ad9160233c9b" alt="Categorias" width="300" />
+<img src="https://github.com/user-attachments/assets/174a0660-f035-4be8-b0a0-ad9160233c9b" alt="Categorias" width="200" />
 
 ### Detalhes
 
-<img src="https://github.com/user-attachments/assets/c76a8ec3-c21a-487b-a2c3-5a970992961c" alt="Detalhe1" width="300" />
-<img src="https://github.com/user-attachments/assets/c30b6423-261b-41b5-a17b-327835a88353" alt="Detalhe2" width="300" />
+<img src="https://github.com/user-attachments/assets/c76a8ec3-c21a-487b-a2c3-5a970992961c" alt="Detalhe1" width="200" />
+<img src="https://github.com/user-attachments/assets/c30b6423-261b-41b5-a17b-327835a88353" alt="Detalhe2" width="200" />
 
 ### Pesquisa
 
-<img src="https://github.com/user-attachments/assets/2480a1dc-a0eb-488f-a759-c0237c7e8650" alt="Pesquisa" width="300" />
-<img src="https://github.com/user-attachments/assets/9d928a98-1a4b-4abf-982f-a569e2d8a768" alt="PesquisaUsando" width="300" />
+<img src="https://github.com/user-attachments/assets/2480a1dc-a0eb-488f-a759-c0237c7e8650" alt="Pesquisa" width="200" />
+<img src="https://github.com/user-attachments/assets/9d928a98-1a4b-4abf-982f-a569e2d8a768" alt="PesquisaUsando" width="200" />
 
 ### Favoritos
 
-<img src="https://github.com/user-attachments/assets/93c751cc-21e5-4ccc-a319-dad9b94ae82d" alt="FavoritosAdd" width="300" />
-<img src="https://github.com/user-attachments/assets/2c45be5d-ec82-4681-983d-8c754ef58e19" alt="Favoritos" width="300" />
-<img src="https://github.com/user-attachments/assets/3c7aa68d-2fd0-467c-a636-cfd20e20eed7" alt="FavoritosRemove" width="300" />
+<img src="https://github.com/user-attachments/assets/93c751cc-21e5-4ccc-a319-dad9b94ae82d" alt="FavoritosAdd" width="200" />
+<img src="https://github.com/user-attachments/assets/2c45be5d-ec82-4681-983d-8c754ef58e19" alt="Favoritos" width="200" />
+<img src="https://github.com/user-attachments/assets/3c7aa68d-2fd0-467c-a636-cfd20e20eed7" alt="FavoritosRemove" width="200" />
 
 ## 🎥 Vídeo do App
 
