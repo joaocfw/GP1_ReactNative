@@ -1,44 +1,73 @@
-![image](https://github.com/user-attachments/assets/71032b55-0f3b-48d4-9247-7a4edb4c36fc) # PopcornHub
-o
+### 🍿 PopcornHub
 
-## 📑 Índice
+PopcornHub é um aplicativo completo para amantes de cinema, oferecendo informações atualizadas sobre os filmes mais populares do momento e permitindo a navegação por categorias variadas. Com uma busca eficiente, o usuário pode facilmente encontrar títulos ou categorias específicas. Além disso, o aplicativo oferece a funcionalidade de adicionar filmes à lista de favoritos, proporcionando uma experiência personalizada e prática.
 
-* Sobre o projeto
-* Tecnologias utilizadas
-* Imagens
-* Autores
-    
-## 📁 Sobre o projeto
+## 📲 Funcionalidades
 
-* Login do Usuário: ao acessar o sistema, o usuário deverá escolher entre as opções de fazer o login ou cadastrar novo usuário. Caso escolha fazer login, deve inserir seu email e sua senha. Caso decida por novo cadastro, deverá inserir nome completo, email e senha.
-* Autenticação: o sistema verifica os dados informados e autentica o usuário, exibindo a página inicial do App.
-* A página inicial traz, na parte superior, os filmes mais populares do momento, e, logo abaixo, os filmes divididos por categoria.
-* Ao selecionar o filme de interesse, o usuário será redirecionado para uma página de detalhes daquele filme, que traz informações como descrição, elenco principal e avaliação.
-* Na mesma página de detalhes, o usuário tem a opção de adicionar/remover aquele filme da sua lista de favoritos ou de assistir ao trailler do filme.
-* O App também permite ao usuário buscar por um título ou categoria específica na página Pesquisar e visualizar seus filmes favoritos na página Favoritos.
+* Cadastro simplificado: O usuário pode se cadastrar de forma rápida, fornecendo apenas seu nome completo, e-mail e senha.
+* Login seguro: Processo de login robusto, garantindo segurança e funcionalidade.
+* Personalização: Após o login, o usuário é saudado pelo nome na página inicial, proporcionando uma experiência personalizada.
+* Filmes populares: A parte superior da página inicial exibe os filmes mais populares do momento, facilitando o acesso às tendências.
+* Categorias: Logo abaixo, o usuário pode navegar pelas diversas categorias de filmes, escolhendo a que mais lhe agrada.
+* Detalhes: Ao clicar em um filme, o usuário tem acesso a informações detalhadas, como descrição, elenco, avaliação e trailer.
+* Pesquisa: A busca por título ou gênero permite que o usuário encontre rapidamente seu filme preferido.
+* Favoritos: O usuário pode adicionar ou remover filmes de sua lista de favoritos, mantendo sempre à mão os títulos que mais gosta.
+* API integrada: sistema que garante a persistência dos cadastros dos usuários, de forma a manter suas contas seguras e funcionais.
   
+## 📸 Telas do App
+
+# Tela de Cadastro
+
+![Cadastro](https://github.com/user-attachments/assets/7689ca2b-ef3a-4489-bad3-d02f8ee6bdbd)
+
+# Tela de Login
+
+![Login](https://github.com/user-attachments/assets/ef440be0-f2e4-4251-9209-cd8e0e4cba59)
+
+# Tela Inicial
+
+![Inicio](https://github.com/user-attachments/assets/68828206-17ba-4eee-856f-32dcf9fd6dab)
+
+# Categorias
+
+![Categorias](https://github.com/user-attachments/assets/174a0660-f035-4be8-b0a0-ad9160233c9b)
+
+# Detalhes
+
+![Detalhe1](https://github.com/user-attachments/assets/c76a8ec3-c21a-487b-a2c3-5a970992961c)
+
+![Detalhe2](https://github.com/user-attachments/assets/c30b6423-261b-41b5-a17b-327835a88353)
+
+# Pesquisa
+
+![Pesquisa](https://github.com/user-attachments/assets/2480a1dc-a0eb-488f-a759-c0237c7e8650)
+
+![PesquisaUsando](https://github.com/user-attachments/assets/9d928a98-1a4b-4abf-982f-a569e2d8a768)
+
+# Favoritos
+
+![FavoritosAdd](https://github.com/user-attachments/assets/93c751cc-21e5-4ccc-a319-dad9b94ae82d)
+
+![Favoritos](https://github.com/user-attachments/assets/2c45be5d-ec82-4681-983d-8c754ef58e19)
+
+![FavoritosRemove](https://github.com/user-attachments/assets/3c7aa68d-2fd0-467c-a636-cfd20e20eed7)
+
+## 🎥 Vídeo do App
+
+https://github.com/user-attachments/assets/c01b1efe-d07e-4878-b6f7-80a66c3762b3
+
 ## 👩🏻‍💻 Tecnologias utilizadas
 
-- [jdk 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
-- [Eclipse](https://eclipseide.org/)
-- [draw.io](https://drawio.com)
-- [Trello](https://trello.com)
-  
-## 🔁 Diagrama
-
-<img src="Diagrama UML - Sequencia.drawio (3).png" alt="Texto Alternativo">
-
-O  nosso ator representa um cliente que vai dar o start na aplicação. Com isso será ativado a primeira fronteira com o nome Tela que contém o menu de login, cadastro ou sair. Ao escolher:
-* login -> o cliente informará nome de usuário e senha. O Controlador, com o nome Dados, irá fornecer os dados recebidos à entidade Sistema, que vai fazer a verificação dessas informações. Caso o nome de usuário e senha sejam inválidos, a entidade Sistema enviará as informações a uma fronteira com o nome Msg TelaErro, que vai retornar o cliente ao login. Caso as informações estejam corretas, a entidade Sistema enviará o cliente a fronteira de nome MenuPrincipal que exibirá na tela Categorias. 
-* cadastro -> o cliente irá digitar nome, cpf, email, login desejado, senha e endereço completo. O Controle com o nome Dados fornecerá essas informações à entidade Sistema, que retorna uma mensagem de cadastro realizado com sucesso.
-* sair -> o Sistema retorna a mensagem "Tudo bem, espero vê-lo novamente em breve!" e encerra o programa.
+- [React Native](https://reactnative.dev/)
+- [Typescript](https://www.w3schools.com/typescript/)
+- [VSCode](https://code.visualstudio.com/)
+- [Expo](https://expo.dev/)
 
 ## 🧑 Autores
 
+- [Aline Magalhães](https://github.com/AlineMG14)
 - [Ana Fortuna](https://github.com/anafortuna)
-- [Ana Mattos](https://github.com/AnaMattoss)
 - [Eber Cintra](https://github.com/cintra444)
-- [Francisco Nascimento](https://github.com/francisconascimento4490)
-- [Matheus Lopes](https://github.com/math3us-lopes)
-- [Savio Castro](https://github.com/7csavio)
-- [Yuri Campos](https://github.com/YuriCampos)
+- [Fred Fernandes](https://github.com/FFred-Fernandes)
+- [João Gabriel Wermelinger](https://github.com/joaocfw)
+- [Lucas Cardinot](https://github.com/UserCardinot)
